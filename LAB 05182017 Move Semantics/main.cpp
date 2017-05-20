@@ -26,8 +26,8 @@ public:
         rvalueP.dataPtr = nullptr; //remove ownership
         //...
     }
-    Glob operator+ (const Glob& p_glob) //Coded to produce
-    // a rvalue
+    //Coded to produce a rvalue
+    Glob operator+ (const Glob& p_glob)
     {
         Glob temp;
         *(temp.dataPtr) = *dataPtr + *(p_glob.dataPtr);
@@ -59,10 +59,22 @@ private:
 int main()
 {
     cout << "MOVE SEMANTICS" << endl;
+    
     // basic rvalue references
+
+    cout << "&&rvalueRef is assigned the result of an expression... 2 + 3" << endl;
     int &&rvalueRef = 2 + 3;
+    cout << "&rvalueRef is : ";
     cout << &rvalueRef << endl;
-    double &&ref = sqrt(36.0);
+    
+    
+    // doubleRef is assigned the result of an expression
+    cout << "&&doubleRef is assigned the result of an expression... sqrt(36.0)" << endl;
+    double &&doubleRef = sqrt(36.0);
+    cout << "&doubleRef is : ";
+    cout << &doubleRef << endl;
+    
+    // Globbie LAB exercises
     Glob globbie1;
     Glob globbie2;
     Glob globbie3(globbie1); //Regular constructor
